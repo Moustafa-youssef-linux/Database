@@ -1,0 +1,11 @@
+- hosts: windows
+  tasks:
+  - name: downloading sql
+    win_get_url: 
+      url: https://go.microsoft.com/fwlink/?linkid=853016
+      dest: C:\Users\Administrator\Setup.exe
+      force: no
+  - name: install sql server
+    win_command: Setup.exe /qs /ACTION=Install /FEATURES=SQLEngine /INSTANCENAME=MSSQLSERVER /SQLSVCACCOUNT="linux-plus\moustafa>" /SQLSVCPASSWORD="Moustafa11@alex" /SQLSYSADMINACCOUNTS="linux-plus\moustafa>" /AGTSVCdACCOUNT="NT AUTHORITY\Network Service" /TCPENABLED=1 /IACCEPTSQLSERVERLICENSETERMS
+    args:
+      chdir: C:\Users\Administrator\
